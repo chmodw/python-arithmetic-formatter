@@ -10,11 +10,15 @@ def arithmetic_arranger(problems, answers=False):
     if len(arithmetics) > 5:
         return ("Error: Too many problems.")
 
-    # convert string to numbers
-    for item in arithmetics:
+    for items in arithmetics:
+        # making sure numbers has only 4 digits
+        for item in items:
+            if len(item) > 4:
+                return ("Error: Numbers cannot be more than four digits.")
+        # convert string to numbers. if can't return an error
         try:
-            item[0] = int(item[0])
-            item[2] = int(item[2])
+            items[0] = int(items[0])
+            items[2] = int(items[2])
         except ValueError:
             return ("Error: Numbers must only contain digits.")
 
