@@ -31,19 +31,14 @@ def arithmetic_arranger(problems, answers=False):
         minLength = len(str(getMin(items)))
 
         # adding row one
-        spaceBefore = maxLength - minLength + 2
-        for s in range(spaceBefore):
-            row1 += " "
-        row1 += str(items[0])
-        for s in range(4):
-            row1 += " "
+
         # adding row two
 
         # adding row three
 
         # adding row four
 
-    return (row1 + "\n" + row2 + "\n" + row3 + "\n" + row4)
+    return (row1[1:] + "\n" + row2 + "\n" + row3 + "\n" + row4)
 
 
 def getMax(list):
@@ -55,7 +50,7 @@ def getMin(list):
 
 
 print(arithmetic_arranger(
-    ["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True))
+    ["32 + 698", "3801 - 2", "45 + 43", "123 + 49"], True))
 
 
 #   32         1      9999      523
