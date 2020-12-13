@@ -40,7 +40,13 @@ def arithmetic_arranger(problems, answers=False):
         for s in range(4):
             row1 += " "
         # adding row two
-
+        row2 += items[1] + " "
+        if(len(str(items[2])) < len(str(items[0]))):
+            for s in range(maxLength - minLength):
+                row2 += " "
+        row2 += str(items[2])
+        for s in range(4):
+            row2 += " "
         # adding row three
 
         # adding row four
