@@ -27,6 +27,10 @@ def arithmetic_arranger(problems, answers=False):
         except ValueError:
             return ("Error: Numbers must only contain digits.")
 
+        # return error when invalid operator present
+        if items[1] != "+" and items[1] != "-":
+            return ("Error: Operator must be '+' or '-'.")
+
         maxLength = len(str(getMax(items)))
         minLength = len(str(getMin(items)))
 
@@ -59,8 +63,6 @@ def arithmetic_arranger(problems, answers=False):
                 answer = items[0] + items[2]
             elif items[1] == "-":
                 answer = items[0] - items[2]
-            else:
-                return ("Error: Operator must be '+' or '-'")
 
             for s in range((maxLength + 2) - len(str(answer))):
                 row4 += " "
@@ -68,7 +70,9 @@ def arithmetic_arranger(problems, answers=False):
             for s in range(4):
                 row4 += " "
 
-    return (row1 + "\n" + row2 + "\n" + row3 + "\n" + row4)
+    # remove trailing spaces and return the string
+    answerRow = '\n' + row4.rstrip() if answer else ""
+    return (row1.rstrip() + '\n' + row2.rstrip() + '\n' + row3.rstrip() + answerRow)
 
 
 def getMax(list):
@@ -77,9 +81,3 @@ def getMax(list):
 
 def getMin(list):
     return min([list[0], list[2]])
-
-
-print(arithmetic_arranger(
-    ["32 + 698", "3801 - 2", "45 + 43", "123 + 49"], True))
-print(arithmetic_arranger(
-    ["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True))
