@@ -48,8 +48,25 @@ def arithmetic_arranger(problems, answers=False):
         for s in range(4):
             row2 += " "
         # adding row three
-
+        for s in range(maxLength+2):
+            row3 += "-"
+        for s in range(4):
+            row3 += " "
         # adding row four
+        answer = 0
+        if answers:
+            if items[1] == "+":
+                answer = items[0] + items[2]
+            elif items[1] == "-":
+                answer = items[0] - items[2]
+            else:
+                return ("Error: Operator must be '+' or '-'")
+
+            for s in range((maxLength + 2) - len(str(answer))):
+                row4 += " "
+            row4 += str(answer)
+            for s in range(4):
+                row4 += " "
 
     return (row1 + "\n" + row2 + "\n" + row3 + "\n" + row4)
 
@@ -66,9 +83,3 @@ print(arithmetic_arranger(
     ["32 + 698", "3801 - 2", "45 + 43", "123 + 49"], True))
 print(arithmetic_arranger(
     ["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True))
-
-
-#   32         1      9999      523
-# +  8    - 3801    + 9999    -  49
-# ----    ------    ------    -----
-#   40     -3800     19998      474
